@@ -1,0 +1,61 @@
+#drape {
+  background-color: #fff;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#textlayer {
+  font-size: 4em;
+  margin: 2em;
+  cursor: pointer;
+  line-height: 1em;
+}
+
+#chunknav {
+  position: fixed;
+  z-index: 10000;
+  bottom: 1em;
+  right: 2em;
+
+  font-family: 'Helvetica Neue', sans-serif;
+
+  border-radius: 0.4em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
+
+.visible-chunk-nav {
+  opacity: 0.3;
+  transition: opacity 0.4s;  
+}
+
+.invisible-chunk-nav {
+  opacity: 0;
+  transition: opacity 1.0s;  
+}
+
+.reading-chunk {
+  color: #eee;
+  font-weight: bold;
+  font-size: 24px;
+  background-color: #222;
+  opacity: 0.33;
+}
+
+.editing-chunk {
+  opacity: 1.0;
+  color: #eee;
+  font-size: 60px;
+}
+

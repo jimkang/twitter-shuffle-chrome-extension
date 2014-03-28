@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+
+  "name": "@shuffle",
+  "description": "Shake things up on your Twitter feed.",
+  "version": "1.0.0",
+
+  "permissions": [
+    "https://twitter.com/*"
+  ],
+
+  "background": {
+    "scripts": ["node_modules/scriptchain/scriptchain.js", "background.js"],
+    "persistent": false
+  },
+
+  "web_accessible_resources": [
+    "@shuffle.css"
+  ],
+
+  "browser_action": {
+    "default_icon": {
+      "19": "onebyone_icon_19.png",
+      "38": "onebyone_icon_38.png"
+    }
+  },
+
+  "icons": {
+    "16": "onebyone_icon_16.png",
+    "48": "onebyone_icon_48.png",
+    "128": "onebyone_icon_128.png"
+  }
+}
+
