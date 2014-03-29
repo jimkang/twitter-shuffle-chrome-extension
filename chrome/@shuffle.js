@@ -11,26 +11,44 @@
     }
   };
 
-  // From Underscore.
-  function shuffle(obj) {
-    var rand;
-    var index = 0;
+  // http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Modern_method
+  function shuffle(array) {
     var shuffled = [];
-    obj.forEach(function(value) {
-      rand = ~~(Math.random(index++));
-      shuffled[index - 1] = shuffled[rand];
-      shuffled[rand] = value;
-    });
+    var swapIndex1 = null;
+    var swapIndex1UpperLimit = array.length;
+    var swapIndex2 = array.length - 1;
+    var swapee = null;
+
+    for (var i = 0; i < array.length; ++i) {
+      swapIndex1 = ~~(Math.random() * swapIndex1UpperLimit);
+
+      if (shuffled[swapIndex1] === undefined) {
+        swapee =  array[swapIndex1];
+      }
+      else {
+        swapee = shuffled[swapIndex1];
+      }
+
+      shuffled[swapIndex1] = array[swapIndex2];
+      shuffled[swapIndex2] = swapee;
+
+      swapIndex1UpperLimit -= 1;
+      swapIndex2 -= 1;
+    }
+
     return shuffled;
   }
 
   var tweetTexts = document.querySelectorAll('.tweet-text');
-  var shuffledTexts = shuffle(tweetTexts);
+  var tweetContents = [];
+  tweetTexts.forEach(function getContents(tweet) {
+    tweetContents.push(tweet.innerHTML);
+  });
+  var shuffledContents = shuffle(tweetContents);
 
   tweetTexts.forEach(function replaceWithShuffled(tweetText, i) {
-    var parent = tweetText.parentNode;
-    parent.removeChild(tweetText);
-    parent.appendChild(shuffledTexts[i]);
+    tweetText.innerHTML = shuffledContents[i];
   });
+  
 })());
 
